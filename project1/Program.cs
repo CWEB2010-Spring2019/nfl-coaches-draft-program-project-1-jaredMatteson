@@ -1,12 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
+
 
 namespace project1
 {
     class Program
     {
-        static void Main(string[] args)
+       
+    }
+    class Players
+    {
+        private string name { get; set; }
+        private string school { get; set; }
+        private int salary { get; set; }
+        private int rank { get; set;  }
+        private string position { get; set; }
+
+        private Players(string name, string school, int salary, int rank, string position )
         {
-            Console.WriteLine("Hello World!");
+            this.name = name;
+            this.school = school;
+            this.salary = salary;
+            this.rank = rank;
+            this.position = position;
+
         }
+        
+        
     }
 }
