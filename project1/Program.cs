@@ -77,6 +77,58 @@ namespace project1
             }
         }
         //Output Grid for the user to see all the player data
+       
+        static void OutputPositionGrid(Players[,] players, int row, string[] pos)
+        {
+            Console.Clear();
+            CenterConsoleWrite(ConsoleColor.White, "");
+            for (int i = 0; i < players.GetLength(1); i++)
+            {
+                CenterConsoleWrite(ConsoleColor.White, $"{players[row, i].Rank}");//Outputting rank names to top of the table
+            }
+            Console.WriteLine("\n");
+            Console.Write($"{pos[row]}".PadRight(20));// Outputting the position based on the row the user selected
+            for (int b = 0; b < 3; b++)
+            {
+                //For loop writing names for each position from array data
+                for (int x = 0; x < players.GetLength(1); x++)
+                {
+                    if (players[row, x].draftedPlayer == false)
+                    {
+                        if (b == 0)
+                        {
+                            CenterConsoleWrite(ConsoleColor.White, $"{players[row, x].Name}");
+                        }
+                        else if (b == 1)
+                        {
+                            CenterConsoleWrite(ConsoleColor.White, $"{players[row, x].School}");
+                        }
+                        else if (b == 2)
+                        {
+                            CenterConsoleWrite(ConsoleColor.Green, $"{players[row, x].Salary.ToString("c")}");
+                        }
+                    }
+                    else
+                    {
+                        if (b == 0)
+                        {
+                            CenterConsoleWrite(ConsoleColor.DarkRed, $"{players[row, x].Name}");
+                        }
+                        else if (b == 1)
+                        {
+                            CenterConsoleWrite(ConsoleColor.DarkRed, $"{players[row, x].School}");
+                        }
+                        else if (b == 2)
+                        {
+                            CenterConsoleWrite(ConsoleColor.DarkRed, $"{players[row, x].Salary.ToString("c")}");
+                        }
+                    }
+                }
+                Console.WriteLine("");
+                CenterConsoleWrite(ConsoleColor.White, "");
+            }
+            Console.WriteLine("");
+        }
         static void OutputGrid(Players[,] players, string[] pos)
         {
             Console.Clear();
@@ -130,57 +182,6 @@ namespace project1
                 }
                 Console.WriteLine("");
             }
-        }
-        static void OutputPositionGrid(Players[,] players, int row, string[] pos)
-        {
-            Console.Clear();
-            CenterConsoleWrite(ConsoleColor.White, "");
-            for (int i = 0; i < players.GetLength(1); i++)
-            {
-                CenterConsoleWrite(ConsoleColor.White, $"{players[row, i].Rank}");//Outputting rank names to top of the table
-            }
-            Console.WriteLine("\n");
-            Console.Write($"{pos[row]}".PadRight(20));// Outputting the position based on the row the user selected
-            for (int b = 0; b < 3; b++)
-            {
-                //For loop writing names for each position from array data
-                for (int x = 0; x < players.GetLength(1); x++)
-                {
-                    if (players[row, x].draftedPlayer == false)
-                    {
-                        if (b == 0)
-                        {
-                            CenterConsoleWrite(ConsoleColor.White, $"{players[row, x].Name}");
-                        }
-                        else if (b == 1)
-                        {
-                            CenterConsoleWrite(ConsoleColor.White, $"{players[row, x].School}");
-                        }
-                        else if (b == 2)
-                        {
-                            CenterConsoleWrite(ConsoleColor.Green, $"{players[row, x].Salary.ToString("c")}");
-                        }
-                    }
-                    else
-                    {
-                        if (b == 0)
-                        {
-                            CenterConsoleWrite(ConsoleColor.DarkRed, $"{players[row, x].Name}");
-                        }
-                        else if (b == 1)
-                        {
-                            CenterConsoleWrite(ConsoleColor.DarkRed, $"{players[row, x].School}");
-                        }
-                        else if (b == 2)
-                        {
-                            CenterConsoleWrite(ConsoleColor.DarkRed, $"{players[row, x].Salary.ToString("c")}");
-                        }
-                    }
-                }
-                Console.WriteLine("");
-                CenterConsoleWrite(ConsoleColor.White, "");
-            }
-            Console.WriteLine("");
         }
         //Creating options for user to select 
         static int GetRow(string[] pos, double cost)
